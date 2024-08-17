@@ -14,3 +14,6 @@ position = Vector2(553, 633)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_fpfi7")
+
+[node name="Platform2" parent="." instance=ExtResource("2_nbr7g")]
+position = Vector2(553, 49)
