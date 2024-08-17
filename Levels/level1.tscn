@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://d18wgpprplhse"]
+[gd_scene load_steps=4 format=3 uid="uid://d18wgpprplhse"]
+
+[ext_resource type="PackedScene" uid="uid://bpl0nr0fxip02" path="res://Scenes/player.tscn" id="1_i44p1"]
+[ext_resource type="PackedScene" uid="uid://c017sb5wueiyn" path="res://Scenes/platform.tscn" id="2_nbr7g"]
+[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_fpfi7"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_i44p1")]
+position = Vector2(565, 552)
+
+[node name="Platform" parent="." instance=ExtResource("2_nbr7g")]
+position = Vector2(553, 633)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_fpfi7")
+
+[node name="Platform2" parent="." instance=ExtResource("2_nbr7g")]
+position = Vector2(553, 49)

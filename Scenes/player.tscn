@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpl0nr0fxip02"]
+[gd_scene load_steps=5 format=3 uid="uid://bpl0nr0fxip02"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_013h8"]
+[ext_resource type="Texture2D" uid="uid://dibstbyxxrtje" path="res://Assets/icon.svg" id="2_aje23"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jpvla"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aje23")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7e2r"]
+size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_013h8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_jpvla")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t7e2r")
