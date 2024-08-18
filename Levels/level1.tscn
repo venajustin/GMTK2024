@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_718h7"]
 size = Vector2(7, 64)
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["played"]]
 
 [node name="Player" parent="." instance=ExtResource("1_i44p1")]
 position = Vector2(549, 606)
@@ -21,7 +21,6 @@ collision_layer = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(708, -19)
-position_smoothing_enabled = true
 script = ExtResource("3_fpfi7")
 
 [node name="Platform2" parent="." instance=ExtResource("2_nbr7g")]
