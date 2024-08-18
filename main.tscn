@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj3m2rpyk20ne"]
+[gd_scene load_steps=8 format=3 uid="uid://bj3m2rpyk20ne"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mrqci"]
 [ext_resource type="PackedScene" uid="uid://cv7ep50urhw5p" path="res://Scenes/menu.tscn" id="2_5vq1i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djibgwytmffec" path="res://Assets/loading-bar.png" id="3_ob3j7"]
 [ext_resource type="PackedScene" uid="uid://dkivowkb4lat3" path="res://Scenes/pause.tscn" id="3_ycesw"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="4_knnbk"]
+[ext_resource type="PackedScene" uid="uid://bpa6ptywoxxde" path="res://Scenes/inventory.tscn" id="7_uxfe0"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_mrqci")
@@ -66,3 +67,11 @@ texture_progress = ExtResource("3_ob3j7")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 322)
 script = ExtResource("4_knnbk")
+
+[node name="Inventory" parent="." instance=ExtResource("7_uxfe0")]
+
+[node name="Arrangement" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpa6ptywoxxde"]
+[gd_scene load_steps=3 format=3 uid="uid://bpa6ptywoxxde"]
 
 [ext_resource type="Texture2D" uid="uid://dibstbyxxrtje" path="res://Assets/icon.svg" id="1_uc5v0"]
+[ext_resource type="PackedScene" uid="uid://0a752tdae7ey" path="res://Scenes/ControlProps/prop_item.tscn" id="2_dl5m4"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -27,50 +28,14 @@ horizontal_scroll_mode = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
 
-[node name="TextureRect6" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
+[node name="TextureRect" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("1_uc5v0")
 
-[node name="TextureRect7" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
+[node name="TextureRect2" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("1_uc5v0")
 
-[node name="TextureRect8" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
+[node name="TextureRect3" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("1_uc5v0")
 
-[node name="TextureRect9" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
+[node name="TextureRect4" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("1_uc5v0")
-
-[node name="TextureRect10" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("1_uc5v0")
-
-[node name="TextureRect3" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("1_uc5v0")
-
-[node name="TextureRect4" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("1_uc5v0")
-
-[node name="TextureRect5" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("1_uc5v0")
