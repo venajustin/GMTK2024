@@ -1,18 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://d18wgpprplhse"]
+[gd_scene load_steps=9 format=3 uid="uid://d18wgpprplhse"]
 
 [ext_resource type="PackedScene" uid="uid://bpl0nr0fxip02" path="res://Scenes/player.tscn" id="1_i44p1"]
 [ext_resource type="PackedScene" uid="uid://c017sb5wueiyn" path="res://Scenes/platform.tscn" id="2_nbr7g"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_fpfi7"]
 [ext_resource type="PackedScene" uid="uid://c0laycxbbb477" path="res://Scenes/cheese.tscn" id="4_wy48c"]
-[ext_resource type="Texture2D" uid="uid://cahy1j02xtu6y" path="res://Assets/Ladder_32_64.png" id="6_77g2y"]
-[ext_resource type="Script" path="res://Levels/ladderfix.gd" id="6_fujap"]
-[ext_resource type="Texture2D" uid="uid://dibstbyxxrtje" path="res://Assets/icon.svg" id="7_vsn71"]
+[ext_resource type="PackedScene" uid="uid://bcwk67ec57535" path="res://Scenes/ladder.tscn" id="5_qa8f2"]
+[ext_resource type="Texture2D" uid="uid://d11ao562mqf1t" path="res://Assets/Props/Fent_Needle.png" id="6_61pcr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ajkh"]
-size = Vector2(7, 65)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3xum"]
+size = Vector2(32, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_718h7"]
-size = Vector2(7, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7sbt"]
+size = Vector2(31.0628, 5.06046)
 
 [node name="Level" type="Node2D" groups=["played"]]
 
@@ -33,33 +32,25 @@ collision_layer = 5
 
 [node name="cheese" parent="." instance=ExtResource("4_wy48c")]
 
+[node name="ladder" parent="." instance=ExtResource("5_qa8f2")]
+
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(895, 591)
+position = Vector2(448, 546)
+rotation = -0.0743285
 collision_layer = 2
-collision_mask = 6
+collision_mask = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture_filter = 1
-position = Vector2(0, -1.49999)
-scale = Vector2(1, 1.04687)
-texture = ExtResource("6_77g2y")
+texture = ExtResource("6_61pcr")
 
 [node name="Area2D" type="Area2D" parent="RigidBody2D"]
-script = ExtResource("6_fujap")
+collision_layer = 3
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
-position = Vector2(-0.5, -1.5)
-shape = SubResource("RectangleShape2D_1ajkh")
-debug_color = Color(0.934755, 0.141345, 0.532725, 0.42)
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_l3xum")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_718h7")
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(909, 615)
-scale = Vector2(0.128907, 0.113281)
-texture = ExtResource("7_vsn71")
-
-[connection signal="body_entered" from="RigidBody2D/Area2D" to="RigidBody2D/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="RigidBody2D/Area2D" to="RigidBody2D/Area2D" method="_on_body_exited"]
+position = Vector2(-0.424591, -0.610016)
+shape = SubResource("RectangleShape2D_g7sbt")
