@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcwk67ec57535"]
+
+[ext_resource type="Texture2D" uid="uid://cahy1j02xtu6y" path="res://Assets/Ladder_32_64.png" id="1_76m17"]
+[ext_resource type="Script" path="res://Levels/ladderfix.gd" id="2_nim6k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ajkh"]
+size = Vector2(7, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_718h7"]
+size = Vector2(7, 64)
+
+[node name="ladder" type="RigidBody2D"]
+position = Vector2(895, 591)
+collision_layer = 2
+collision_mask = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1.49999)
+scale = Vector2(1, 1.04687)
+texture = ExtResource("1_76m17")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_nim6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_1ajkh")
+debug_color = Color(0.934755, 0.141345, 0.532725, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_718h7")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
