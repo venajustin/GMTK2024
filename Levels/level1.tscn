@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d18wgpprplhse"]
+[gd_scene load_steps=8 format=3 uid="uid://d18wgpprplhse"]
 
 [ext_resource type="PackedScene" uid="uid://bpl0nr0fxip02" path="res://Scenes/player.tscn" id="1_i44p1"]
 [ext_resource type="PackedScene" uid="uid://c017sb5wueiyn" path="res://Scenes/platform.tscn" id="2_nbr7g"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_fpfi7"]
 [ext_resource type="PackedScene" uid="uid://c0laycxbbb477" path="res://Scenes/cheese.tscn" id="4_wy48c"]
+[ext_resource type="Texture2D" uid="uid://cahy1j02xtu6y" path="res://Assets/Ladder_32_64.png" id="6_77g2y"]
+[ext_resource type="Script" path="res://Levels/RigidBody2D.gd" id="6_li6sd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_718h7"]
+size = Vector2(7, 64)
 
 [node name="Level" type="Node2D"]
 
@@ -12,6 +17,7 @@ position = Vector2(549, 606)
 
 [node name="Platform" parent="." instance=ExtResource("2_nbr7g")]
 position = Vector2(553, 633)
+collision_layer = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(708, -19)
@@ -20,5 +26,27 @@ script = ExtResource("3_fpfi7")
 
 [node name="Platform2" parent="." instance=ExtResource("2_nbr7g")]
 position = Vector2(546, 577)
+collision_layer = 5
 
 [node name="cheese" parent="." instance=ExtResource("4_wy48c")]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(895, 591)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("6_li6sd")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture_filter = 1
+position = Vector2(0, -1.49999)
+scale = Vector2(1, 1.04687)
+texture = ExtResource("6_77g2y")
+
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_718h7")
+
+[connection signal="body_entered" from="RigidBody2D/Area2D" to="RigidBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="RigidBody2D/Area2D" to="RigidBody2D" method="_on_area_2d_body_exited"]
