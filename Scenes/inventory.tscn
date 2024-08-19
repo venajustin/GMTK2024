@@ -34,6 +34,27 @@ layout_mode = 2
 [node name="TextureRect2" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
 layout_mode = 2
 
+[node name="TextureRect5" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
+layout_mode = 2
+
+[node name="TextureRect6" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
+layout_mode = 2
+
+[node name="TextureRect7" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
+layout_mode = 2
+
+[node name="TextureRect8" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
+layout_mode = 2
+
+[node name="TextureRect9" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
+layout_mode = 2
+
+[node name="TextureRect10" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
+layout_mode = 2
+
+[node name="TextureRect11" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
+layout_mode = 2
+
 [node name="TextureRect3" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
 layout_mode = 2
 
