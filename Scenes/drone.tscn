@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm2a5h72dryad"]
+[gd_scene load_steps=10 format=3 uid="uid://bm2a5h72dryad"]
 
-[ext_resource type="Texture2D" uid="uid://cj31lotbt7672" path="res://Assets/Props/Book_Side_32_32.png" id="1_f0u5k"]
+[ext_resource type="Texture2D" uid="uid://cdp4d0m0mjv15" path="res://Assets/Level Design/Drone.png" id="1_i1oeh"]
 
 [sub_resource type="GDScript" id="GDScript_0yk36"]
 script/source = "extends AnimatableBody2D
@@ -10,9 +10,10 @@ var move_up = false
 var move_duration = 2.0 
 var move_timer = 0.0
 var drone_flag = 0
+@onready var animated_sprite = $AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	animated_sprite.play(\"drone_hover\")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,10 +35,46 @@ func _on_area_2d_body_entered(body):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqex0"]
-size = Vector2(11, 5)
+size = Vector2(27, 9.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytw4r"]
-size = Vector2(32, 6)
+size = Vector2(44, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q510m"]
+atlas = ExtResource("1_i1oeh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa12o"]
+atlas = ExtResource("1_i1oeh")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll553"]
+atlas = ExtResource("1_i1oeh")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rmlq"]
+atlas = ExtResource("1_i1oeh")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_31k6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q510m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa12o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll553")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rmlq")
+}],
+"loop": true,
+"name": &"drone_hover",
+"speed": 10.0
+}]
 
 [node name="drone" type="AnimatableBody2D"]
 position = Vector2(320, 545)
@@ -46,15 +83,18 @@ script = SubResource("GDScript_0yk36")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -1)
+position = Vector2(3.5, -3.25)
 shape = SubResource("RectangleShape2D_aqex0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("1_f0u5k")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0.5)
 shape = SubResource("RectangleShape2D_ytw4r")
 one_way_collision = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_31k6r")
+animation = &"drone_hover"
+frame_progress = 0.077055
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
