@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://e74ipv610cot"]
+
+[ext_resource type="PackedScene" uid="uid://0a752tdae7ey" path="res://Scenes/ControlProps/prop_item.tscn" id="1_i385y"]
+[ext_resource type="Texture2D" uid="uid://dpxdk68umq8lc" path="res://Assets/Props/Fent_Needle.png" id="2_ogpsh"]
+[ext_resource type="PackedScene" uid="uid://bomxqopy74rw6" path="res://Scenes/fent_needle.tscn" id="3_wvc5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rr2o"]
+size = Vector2(130, 20)
+
+[node name="TextureRect" instance=ExtResource("1_i385y")]
+texture_filter = 1
+texture = ExtResource("2_ogpsh")
+item_scene = ExtResource("3_wvc5q")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(65, 61.5)
+shape = SubResource("RectangleShape2D_2rr2o")
