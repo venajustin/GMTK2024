@@ -8,49 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://bomxqopy74rw6" path="res://Scenes/fent_needle.tscn" id="6_2pumo"]
 [ext_resource type="PackedScene" uid="uid://dwktdtuaeitx" path="res://Scenes/wood_plank.tscn" id="7_xbv5l"]
 [ext_resource type="PackedScene" uid="uid://ccnx3dtv0x4dm" path="res://Scenes/spring.tscn" id="8_k8nuk"]
-[ext_resource type="Texture2D" uid="uid://cj31lotbt7672" path="res://Assets/Props/Book_Side_32_32.png" id="9_y174j"]
+[ext_resource type="Texture2D" uid="uid://dxe37qfifrrvi" path="res://Assets/Props/catapult-icon-vector.jpg" id="9_3e10q"]
+[ext_resource type="Script" path="res://Levels/catapult.gd" id="10_tec2h"]
 
-[sub_resource type="GDScript" id="GDScript_0yk36"]
-script/source = "extends AnimatableBody2D
+[sub_resource type="CircleShape2D" id="CircleShape2D_8lfrh"]
+radius = 4.0
 
-var speed = 200
-var move_up = false
-var move_duration = 2.0 
-var move_timer = 0.0
-var drone_flag = 0
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if move_up:
-		position.y -= speed * delta
-		move_timer -= delta
-		
-		if move_timer <= 0:
-			move_up = false
-	
-
-func _on_area_2d_body_entered(body):
-	if body.name == \"Player\":
-		if body.position.y < position.y && drone_flag != 1:
-			move_up = true
-			move_timer = move_duration
-			drone_flag = 1
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqex0"]
-size = Vector2(11, 5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytw4r"]
-size = Vector2(32, 6)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpla7"]
+size = Vector2(18, 18)
 
 [node name="Level" type="Node2D" groups=["played"]]
 
 [node name="Player" parent="." instance=ExtResource("1_i44p1")]
 position = Vector2(549, 606)
+SPEED = null
+spring = null
+pushforce = null
+climbing = null
 
 [node name="Platform" parent="." instance=ExtResource("2_nbr7g")]
 position = Vector2(553, 633)
@@ -76,24 +50,23 @@ collision_mask = 1
 [node name="wood_plank" parent="." instance=ExtResource("7_xbv5l")]
 
 [node name="spring" parent="." instance=ExtResource("8_k8nuk")]
-collision_mask = 6
 
-[node name="drone" type="AnimatableBody2D" parent="."]
-position = Vector2(320, 545)
-script = SubResource("GDScript_0yk36")
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(140, 556)
 
-[node name="Area2D" type="Area2D" parent="drone"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+scale = Vector2(0.0173469, 0.0173469)
+texture = ExtResource("9_3e10q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="drone/Area2D"]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_aqex0")
+[node name="Area2D" type="Area2D" parent="RigidBody2D2"]
+script = ExtResource("10_tec2h")
 
-[node name="Sprite2D" type="Sprite2D" parent="drone"]
-texture_filter = 1
-texture = ExtResource("9_y174j")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2/Area2D"]
+position = Vector2(-4, -7)
+shape = SubResource("CircleShape2D_8lfrh")
+debug_color = Color(0.912045, 0.156801, 0.617388, 0.42)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="drone"]
-shape = SubResource("RectangleShape2D_ytw4r")
-one_way_collision = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource("RectangleShape2D_mpla7")
 
-[connection signal="body_entered" from="drone/Area2D" to="drone" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="RigidBody2D2/Area2D" to="RigidBody2D2/Area2D" method="_on_body_entered"]

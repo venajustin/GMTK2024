@@ -14,10 +14,6 @@
 script/source = "extends AnimatableBody2D
 
 var speed = 200
-var move_up = false
-var move_duration = 2.0 
-var move_timer = 0.0
-var drone_flag = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -25,24 +21,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if move_up:
-		position.y -= speed * delta
-		move_timer -= delta
-		
-		if move_timer <= 0:
-			move_up = false
 	
 
-func _on_area_2d_body_entered(body):
-	if body.name == \"Player\":
-		if body.position.y < position.y && drone_flag != 1:
-			move_up = true
-			move_timer = move_duration
-			drone_flag = 1
+	func _on_area_2d_body_entered(body):
+		if body.name == \"Player\":
+			position.y -= 15
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqex0"]
-size = Vector2(11, 5)
+size = Vector2(28, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytw4r"]
 size = Vector2(32, 6)
@@ -85,7 +72,7 @@ script = SubResource("GDScript_0yk36")
 [node name="Area2D" type="Area2D" parent="drone"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="drone/Area2D"]
-position = Vector2(0, -1)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_aqex0")
 
 [node name="Sprite2D" type="Sprite2D" parent="drone"]
