@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwktdtuaeitx"]
+
+[ext_resource type="Texture2D" uid="uid://c1bu6i5gkrmjs" path="res://Assets/Props/Wood_Plank_32_64.png" id="1_asnl7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ex6l0"]
+size = Vector2(6.17247, 63.2692)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(427, 534)
+rotation = 0.229933
+collision_layer = 5
+collision_mask = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-5.61418, 2.44192)
+scale = Vector2(1, 0.996851)
+texture = ExtResource("1_asnl7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.80096, 2.48602)
+shape = SubResource("RectangleShape2D_ex6l0")
