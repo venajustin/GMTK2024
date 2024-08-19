@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcwk67ec57535"]
+[gd_scene load_steps=5 format=3 uid="uid://d3j4jujp0a7xf"]
 
-[ext_resource type="Texture2D" uid="uid://cahy1j02xtu6y" path="res://Assets/Ladder_32_64.png" id="1_76m17"]
+[ext_resource type="Texture2D" uid="uid://ds1omglyy86hk" path="res://Assets/Props/Ladder_32_64.png" id="1_ccm0h"]
 [ext_resource type="Script" path="res://Levels/ladderfix.gd" id="2_nim6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ajkh"]
@@ -10,7 +10,6 @@ size = Vector2(7, 65)
 size = Vector2(7, 64)
 
 [node name="ladder" type="RigidBody2D"]
-position = Vector2(895, 591)
 collision_layer = 2
 collision_mask = 6
 
@@ -18,7 +17,7 @@ collision_mask = 6
 texture_filter = 1
 position = Vector2(0, -1.49999)
 scale = Vector2(1, 1.04687)
-texture = ExtResource("1_76m17")
+texture = ExtResource("1_ccm0h")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("2_nim6k")

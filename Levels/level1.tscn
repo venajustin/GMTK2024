@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dwktdtuaeitx" path="res://Scenes/wood_plank.tscn" id="7_xbv5l"]
 [ext_resource type="PackedScene" uid="uid://ccnx3dtv0x4dm" path="res://Scenes/spring.tscn" id="8_k8nuk"]
 [ext_resource type="Texture2D" uid="uid://cj31lotbt7672" path="res://Assets/Props/Book_Side_32_32.png" id="9_y174j"]
+[ext_resource type="Texture2D" uid="uid://dpxdk68umq8lc" path="res://Assets/Props/Fent_Needle.png" id="6_61pcr"]
 
 [sub_resource type="GDScript" id="GDScript_0yk36"]
 script/source = "extends AnimatableBody2D
