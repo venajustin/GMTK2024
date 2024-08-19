@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccnx3dtv0x4dm"]
 
 [ext_resource type="Texture2D" uid="uid://bpkb7ujo3ye" path="res://Assets/Props/4dd41b3e4f04a32.png" id="1_5e8sa"]
-[ext_resource type="Script" path="res://Levels/spring.gd" id="2_iylff"]
+[ext_resource type="Script" path="res://Scripts/spring.gd" id="2_iylff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kp52y"]
 size = Vector2(20, 4)
