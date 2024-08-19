@@ -9,43 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://dwktdtuaeitx" path="res://Scenes/wood_plank.tscn" id="7_xbv5l"]
 [ext_resource type="PackedScene" uid="uid://ccnx3dtv0x4dm" path="res://Scenes/spring.tscn" id="8_k8nuk"]
 [ext_resource type="Texture2D" uid="uid://cj31lotbt7672" path="res://Assets/Props/Book_Side_32_32.png" id="9_y174j"]
-[ext_resource type="Texture2D" uid="uid://dpxdk68umq8lc" path="res://Assets/Props/Fent_Needle.png" id="6_61pcr"]
+[ext_resource type="Script" path="res://Levels/drone.gd" id="10_a58hn"]
 
-[sub_resource type="GDScript" id="GDScript_0yk36"]
-script/source = "extends AnimatableBody2D
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy3uf"]
+size = Vector2(32, 1)
 
-var speed = 200
-var move_up = false
-var move_duration = 2.0 
-var move_timer = 0.0
-var drone_flag = 0
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if move_up:
-		position.y -= speed * delta
-		move_timer -= delta
-		
-		if move_timer <= 0:
-			move_up = false
-	
-
-func _on_area_2d_body_entered(body):
-	if body.name == \"Player\":
-		if body.position.y < position.y && drone_flag != 1:
-			move_up = true
-			move_timer = move_duration
-			drone_flag = 1
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqex0"]
-size = Vector2(11, 5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytw4r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw6g5"]
 size = Vector2(32, 6)
 
 [node name="Level" type="Node2D" groups=["played"]]
@@ -77,24 +46,24 @@ collision_mask = 1
 [node name="wood_plank" parent="." instance=ExtResource("7_xbv5l")]
 
 [node name="spring" parent="." instance=ExtResource("8_k8nuk")]
+
+[node name="drone" type="RigidBody2D" parent="."]
+position = Vector2(152, 555)
 collision_mask = 6
-
-[node name="drone" type="AnimatableBody2D" parent="."]
-position = Vector2(320, 545)
-script = SubResource("GDScript_0yk36")
-
-[node name="Area2D" type="Area2D" parent="drone"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="drone/Area2D"]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_aqex0")
 
 [node name="Sprite2D" type="Sprite2D" parent="drone"]
 texture_filter = 1
 texture = ExtResource("9_y174j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="drone"]
-shape = SubResource("RectangleShape2D_ytw4r")
-one_way_collision = true
+[node name="Area2D" type="Area2D" parent="drone"]
+script = ExtResource("10_a58hn")
 
-[connection signal="body_entered" from="drone/Area2D" to="drone" method="_on_area_2d_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="drone/Area2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_sy3uf")
+debug_color = Color(0.95712, 0.0568614, 0.501927, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="drone"]
+shape = SubResource("RectangleShape2D_iw6g5")
+
+[connection signal="body_entered" from="drone/Area2D" to="drone/Area2D" method="_on_body_entered"]

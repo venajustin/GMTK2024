@@ -3,13 +3,14 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
+@export var spring = -600.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+@export var pushforce = 50.0
 func _ready() :
 	velocity = Vector2.ZERO
 @export var climbing = false
+@export var weight = 1.0;
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -39,6 +40,26 @@ func _physics_process(delta):
 	
 
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D && c.get_collider().name != "drone":
+			c.get_collider().apply_central_impulse(Vector2(-c.get_normal().x, -c.get_normal().y * 100))
+			if c.get_normal().y > 0:
+				var torque = 25 * (c.get_collider().position.x - position.x)
+				c.get_collider().apply_torque_impulse(torque)
+			if c.get_normal().x < 0:
+				c.get_collider().apply_impulse(Vector2(-c.get_normal().x * pushforce, -c.get_normal().y))
+			else:
+				c.get_collider().apply_impulse(Vector2(-c.get_normal().x * pushforce, -c.get_normal().y))
+			
+
 
 func impulse(dv:Vector2):
 	velocity.y += dv.y;
+
+func bounce():
+	velocity.y = spring
+
+func launch():
+	velocity.x = 500

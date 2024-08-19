@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccnx3dtv0x4dm"]
+
+[ext_resource type="Texture2D" uid="uid://bpkb7ujo3ye" path="res://Assets/Props/4dd41b3e4f04a32.png" id="1_5e8sa"]
+[ext_resource type="Script" path="res://Levels/spring.gd" id="2_iylff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp52y"]
+size = Vector2(20, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ets8"]
+size = Vector2(20, 24)
+
+[node name="spring" type="RigidBody2D"]
+position = Vector2(258, 554)
+rotation = 3.14009
+collision_layer = 6
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.62939e-06, 1.00005)
+scale = Vector2(0.02125, 0.02125)
+texture = ExtResource("1_5e8sa")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("2_iylff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 10.0001)
+shape = SubResource("RectangleShape2D_kp52y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8ets8")
+debug_color = Color(0.96703, 0, 0.47683, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
