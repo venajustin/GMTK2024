@@ -90,6 +90,10 @@ release={
 ]
 }
 
+[physics]
+
+common/max_physics_steps_per_frame=30
+
 [rendering]
 
 renderer/rendering_method="mobile"
