@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://bpl0nr0fxip02"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_013h8"]
-[ext_resource type="Texture2D" uid="uid://drpja8q1s3sp0" path="res://Assets/Character Animations/Babt_Mouse_Idle.png" id="2_us2gg"]
-[ext_resource type="Texture2D" uid="uid://cblu5ol8u21cp" path="res://Assets/Character Animations/Baby_Mouse_Run_32_32.png" id="3_a0wxc"]
+[ext_resource type="Texture2D" uid="uid://b4j1myp428n0w" path="res://Assets/Character Animations/Babt_Mouse_Idle.png" id="2_us2gg"]
+[ext_resource type="Texture2D" uid="uid://jlrcer5h7td" path="res://Assets/Character Animations/Baby_Mouse_Run_32_32.png" id="3_a0wxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7e2r"]
 size = Vector2(15, 8.5)
