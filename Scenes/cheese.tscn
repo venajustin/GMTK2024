@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0laycxbbb477"]
 
 [ext_resource type="Script" path="res://Scripts/Area2D.gd" id="1_pgqmt"]
-[ext_resource type="Texture2D" uid="uid://c5vhm8m2bw3gv" path="res://Assets/Misc Reference/Mouse 1.png" id="1_vnjd8"]
+[ext_resource type="Texture2D" uid="uid://cy8fcpm668v36" path="res://Assets/Props/THECHEEZE.png" id="2_h3cws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmbhy"]
-size = Vector2(28, 13)
+size = Vector2(30, 20)
 
 [node name="cheese" type="Area2D"]
 position = Vector2(614, 551)
 script = ExtResource("1_pgqmt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_vnjd8")
+texture = ExtResource("2_h3cws")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 7.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_rmbhy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

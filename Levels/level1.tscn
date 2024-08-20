@@ -69,3 +69,6 @@ position = Vector2(805, 520)
 
 [node name="windows" parent="." instance=ExtResource("11_3fjvr")]
 position = Vector2(532, 684)
+
+[node name="cheese2" parent="." instance=ExtResource("4_wy48c")]
+position = Vector2(905, 548)
