@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkmxgwqwbjwps"]
+
+[ext_resource type="PackedScene" uid="uid://0a752tdae7ey" path="res://Scenes/ControlProps/prop_item.tscn" id="1_rijpk"]
+[ext_resource type="Texture2D" uid="uid://dkbyp5v8bd01b" path="res://Assets/Props/Ladder_32_64.png" id="2_gjdq2"]
+[ext_resource type="PackedScene" uid="uid://d3j4jujp0a7xf" path="res://Scenes/ladder.tscn" id="3_wcsox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0agwe"]
+size = Vector2(28, 125)
+
+[node name="TextureRect" instance=ExtResource("1_rijpk")]
+texture = ExtResource("2_gjdq2")
+item_scene = ExtResource("3_wcsox")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(62, 64.5)
+shape = SubResource("RectangleShape2D_0agwe")
