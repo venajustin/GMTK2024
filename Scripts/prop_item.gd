@@ -39,11 +39,13 @@ func _process(_delta):
 				arrangement.add_child(self)
 
 	else:
+		
+		if Input.is_action_just_released("grab") && held == true:
+			if viewport.get_mouse_position().x < 100 :
+				arrangement.remove_child(self)
+				box.add_child(self)
+				rotation = 0
 		held = false
-		if viewport.get_mouse_position().x < 100 :
-			arrangement.remove_child(self)
-			box.add_child(self)
-			rotation = 0
 
 	if held:
 		position =  _camera.get_local_mouse_position() + _camera.global_position - px_size_div2
