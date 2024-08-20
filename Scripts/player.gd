@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @export var SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var JUMP_VELOCITY = -400.0
 @export var spring = -600.0
 @onready var _animated_sprite = $AnimatedSprite2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -13,6 +13,8 @@ func _ready() :
 	_animated_sprite.play("idle")
 @export var climbing = false
 @export var weight = 1.0;
+var cheese = 0.0
+var original_position: Vector2 = Vector2(480,490)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -38,14 +40,26 @@ func _physics_process(delta):
 	if is_on_floor():
 		if velocity.x > 0:
 			_animated_sprite.flip_h = false
-			_animated_sprite.play("run")
+			if weight == 1.0:
+				_animated_sprite.play("run")
+			else:
+				_animated_sprite.play("med_run")
 		elif velocity.x < 0:
 			_animated_sprite.flip_h = true
-			_animated_sprite.play("run")
+			if weight == 1.0:
+				_animated_sprite.play("run")
+			else:
+				_animated_sprite.play("med_run")
 		else:
-			_animated_sprite.play("idle")
+			if weight == 1.0:
+				_animated_sprite.play("idle")
+			else:
+				_animated_sprite.play("med_idle")
 	else:
-		_animated_sprite.play("jump")
+		if weight == 1.0:
+				_animated_sprite.play("jump")
+		else:
+				_animated_sprite.play("med_jump")
 		
 	
 
@@ -79,7 +93,18 @@ func impulse(dv:Vector2):
 	velocity.y += dv.y;
 
 func bounce():
-	velocity.y = spring
+	if weight == 1.0:
+		velocity.y = spring
+	else: 
+		velocity.y = spring + 200
 
-func launch():
-	velocity.x = 500
+func gotCheese():
+	if cheese == 0.0:
+		weight = 2.0
+		SPEED = 100
+		JUMP_VELOCITY = -200
+		position = original_position
+		cheese = 1.0
+	elif cheese == 1.0:
+		get_tree().reload_current_scene()
+	
