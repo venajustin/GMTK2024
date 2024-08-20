@@ -20,11 +20,13 @@ var pause:Control
 var level:Node2D = null;
 
 @onready var _window := get_window()
+@onready var _tree = get_tree()
 
 @onready var _path_follow:PathFollow2D = $Path2D/PathFollow2D
 
 @onready var _inventory:Control = $CanvasLayer/Inventory
-@onready var _inventory_audio_stream = $CanvasLayer/Inventory/AudioStreamPlayer2D
+
+var round = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,12 +38,16 @@ func _ready():
 	#_intersect_params.collision_mask = 0x7FFFFFFF
 	#_intersect_params.exclude = []
 	
+	_tree.paused = true;
+
 	menu = _menu_scene.instantiate()
+	
 	_canvas.add_child(menu)
 	menu.connect("start_level", _on_menu_start_level);
 	state = GameState.MENU;
 	
 	pause = _pause_scene.instantiate()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,10 +60,7 @@ func _process(_delta):
 			_window.mode = Window.MODE_EXCLUSIVE_FULLSCREEN
 	
 	if Input.is_action_just_pressed("pause"):
-		if state == GameState.MENU:
-			get_tree().quit()
-		else:
-			pause_game()
+		pause_game()
 		
 		
 	if state == GameState.BUILD:
@@ -81,7 +84,7 @@ func _process(_delta):
 func start_level():
 	level.process_mode = Node.PROCESS_MODE_INHERIT
 	state = GameState.RUNNING
-	_canvas.remove_child(_inventory);
+	_inventory.close()
 	_camera.tracking_node = level.find_child("Player") 
 	var props = _arrangement.get_children();
 	for prop in props:
@@ -96,11 +99,13 @@ func start_level():
 func pause_game():
 	if paused:
 		paused = !paused
-		level.process_mode = Node.PROCESS_MODE_INHERIT if state == GameState.RUNNING else Node.PROCESS_MODE_DISABLED
+		_tree.paused = false
+		#level.process_mode = Node.PROCESS_MODE_INHERIT if state == GameState.RUNNING else Node.PROCESS_MODE_DISABLED
 		_canvas.remove_child(pause)
 	else:
 		paused = !paused
-		level.process_mode = Node.PROCESS_MODE_DISABLED
+		_tree.paused = true
+		#level.process_mode = Node.PROCESS_MODE_DISABLED
 		_canvas.add_child(pause)
 		pause.focus()
 		pause.connect("pause_game", pause_game)
@@ -108,6 +113,7 @@ func pause_game():
 
 
 func _on_menu_start_level():
+	_tree.paused = false
 	_canvas.remove_child(menu)
 	level = load("res://Levels/level5.tscn").instantiate()
 	get_tree().current_scene.add_child(level)
