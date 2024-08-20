@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d18wgpprplhse"]
+[gd_scene load_steps=14 format=3 uid="uid://d18wgpprplhse"]
 
 [ext_resource type="PackedScene" uid="uid://bpl0nr0fxip02" path="res://Scenes/player.tscn" id="1_i44p1"]
 [ext_resource type="PackedScene" uid="uid://c017sb5wueiyn" path="res://Scenes/platform.tscn" id="2_nbr7g"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bm2a5h72dryad" path="res://Scenes/drone.tscn" id="9_ivry0"]
 [ext_resource type="PackedScene" uid="uid://bdgc8w6hgjbkc" path="res://Scenes/borders.tscn" id="10_i0uek"]
 [ext_resource type="PackedScene" uid="uid://ctjt3qy2ivrvs" path="res://Scenes/windows.tscn" id="11_3fjvr"]
+[ext_resource type="PackedScene" uid="uid://f3rvsh4p5i4e" path="res://Scenes/cargo_ramp.tscn" id="12_0affw"]
+[ext_resource type="PackedScene" uid="uid://cftd6g3n4l3wd" path="res://Scenes/small_pipe.tscn" id="13_kthh1"]
 
 [node name="Level" type="Node2D" groups=["played"]]
 
@@ -72,3 +74,7 @@ position = Vector2(532, 684)
 
 [node name="cheese2" parent="." instance=ExtResource("4_wy48c")]
 position = Vector2(905, 548)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("12_0affw")]
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("13_kthh1")]

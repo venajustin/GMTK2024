@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://eji2l4rpuqgv"]
+
+[ext_resource type="PackedScene" uid="uid://ctjt3qy2ivrvs" path="res://Scenes/windows.tscn" id="1_amfc7"]
+
+[node name="Node" type="Node"]
+
+[node name="windows2" parent="." instance=ExtResource("1_amfc7")]
+position = Vector2(200, 570)
+
+[node name="windows" parent="." instance=ExtResource("1_amfc7")]
+position = Vector2(700, 570)

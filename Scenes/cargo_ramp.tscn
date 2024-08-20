@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://f3rvsh4p5i4e"]
+
+[ext_resource type="Texture2D" uid="uid://cx2esjwjdjcqp" path="res://Assets/Level Design/Destroyed_Crate_128_64.png" id="1_ecs6o"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(174, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ecs6o")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, -4, -64, 21, -64, 32, 63, 33, 64, -30)

@@ -1,0 +1,77 @@
+[gd_scene load_steps=14 format=3 uid="uid://cngleueobeh7k"]
+
+[ext_resource type="PackedScene" uid="uid://bpl0nr0fxip02" path="res://Scenes/player.tscn" id="1_e5g32"]
+[ext_resource type="PackedScene" uid="uid://bdgc8w6hgjbkc" path="res://Scenes/borders.tscn" id="1_nwgt1"]
+[ext_resource type="PackedScene" uid="uid://bwo227arhjvib" path="res://Scenes/background.tscn" id="2_o30tx"]
+[ext_resource type="PackedScene" uid="uid://cftd6g3n4l3wd" path="res://Scenes/small_pipe.tscn" id="4_6sis1"]
+[ext_resource type="PackedScene" uid="uid://c017sb5wueiyn" path="res://Scenes/platform.tscn" id="6_plca4"]
+[ext_resource type="PackedScene" uid="uid://eji2l4rpuqgv" path="res://Scenes/2_windows.tscn" id="7_inowo"]
+[ext_resource type="PackedScene" uid="uid://f3rvsh4p5i4e" path="res://Scenes/cargo_ramp.tscn" id="7_qrkkg"]
+[ext_resource type="PackedScene" uid="uid://c0laycxbbb477" path="res://Scenes/cheese.tscn" id="8_gp7g5"]
+[ext_resource type="PackedScene" uid="uid://0a752tdae7ey" path="res://Scenes/ControlProps/prop_item.tscn" id="9_pwc5v"]
+[ext_resource type="PackedScene" uid="uid://bm2a5h72dryad" path="res://Scenes/drone.tscn" id="10_jqk8r"]
+[ext_resource type="PackedScene" uid="uid://d3j4jujp0a7xf" path="res://Scenes/ladder.tscn" id="11_ssy42"]
+[ext_resource type="PackedScene" uid="uid://dwktdtuaeitx" path="res://Scenes/wood_plank.tscn" id="12_y6eck"]
+[ext_resource type="PackedScene" uid="uid://ccnx3dtv0x4dm" path="res://Scenes/spring.tscn" id="13_vl7l3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_e5g32")]
+position = Vector2(480, 490)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("1_nwgt1")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_o30tx")]
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("4_6sis1")]
+position = Vector2(480, 500)
+
+[node name="Platform" parent="." instance=ExtResource("6_plca4")]
+position = Vector2(463, 392)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("7_qrkkg")]
+position = Vector2(817, 358)
+rotation = -6.28319
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("4_6sis1")]
+position = Vector2(766, 309)
+
+[node name="Node" parent="." instance=ExtResource("7_inowo")]
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("7_qrkkg")]
+position = Vector2(118, 353)
+scale = Vector2(-1, 1)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("4_6sis1")]
+position = Vector2(175, 306)
+
+[node name="Platform2" parent="." instance=ExtResource("6_plca4")]
+position = Vector2(488, 231)
+
+[node name="cheese" parent="." instance=ExtResource("8_gp7g5")]
+position = Vector2(486, 219)
+
+[node name="Node2" type="Node" parent="."]
+
+[node name="TextureRect" parent="Node2" instance=ExtResource("9_pwc5v")]
+item_scene = ExtResource("10_jqk8r")
+
+[node name="Node3" type="Node" parent="."]
+
+[node name="TextureRect" parent="Node3" instance=ExtResource("9_pwc5v")]
+item_scene = ExtResource("11_ssy42")
+
+[node name="Node4" type="Node" parent="."]
+
+[node name="TextureRect" parent="Node4" instance=ExtResource("9_pwc5v")]
+item_scene = ExtResource("11_ssy42")
+
+[node name="Node5" type="Node" parent="."]
+
+[node name="TextureRect" parent="Node5" instance=ExtResource("9_pwc5v")]
+item_scene = ExtResource("12_y6eck")
+
+[node name="Node6" type="Node" parent="."]
+
+[node name="TextureRect" parent="Node6" instance=ExtResource("9_pwc5v")]
+item_scene = ExtResource("13_vl7l3")
