@@ -1,32 +1,84 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpa6ptywoxxde"]
+[gd_scene load_steps=15 format=3 uid="uid://bpa6ptywoxxde"]
 
-[ext_resource type="Texture2D" uid="uid://dibstbyxxrtje" path="res://Assets/icon.svg" id="1_uc5v0"]
+[ext_resource type="Script" path="res://Scripts/inventory.gd" id="1_h6cvh"]
+[ext_resource type="Texture2D" uid="uid://iunw5d76mqj" path="res://Assets/Level Design/drawer.png" id="1_wqksa"]
 [ext_resource type="PackedScene" uid="uid://0a752tdae7ey" path="res://Scenes/ControlProps/prop_item.tscn" id="2_dl5m4"]
 [ext_resource type="PackedScene" uid="uid://dod275p87rve" path="res://Scenes/testitem.tscn" id="3_qyrux"]
 [ext_resource type="PackedScene" uid="uid://e74ipv610cot" path="res://Scenes/ControlProps/fent_needle_prop.tscn" id="4_qb5mr"]
+[ext_resource type="AudioStream" uid="uid://esoa6hidofwy" path="res://Assets/Sound/DrawerOpen.wav" id="6_knn5w"]
+[ext_resource type="AudioStream" uid="uid://cldjaoiwrpy11" path="res://Assets/Sound/DrawerClose.wav" id="7_jamtx"]
 
-[sub_resource type="AudioStream" id="AudioStream_iixy3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlyut"]
+atlas = ExtResource("1_wqksa")
+region = Rect2(256, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04ouj"]
+atlas = ExtResource("1_wqksa")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81kpy"]
+atlas = ExtResource("1_wqksa")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu4uw"]
+atlas = ExtResource("1_wqksa")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c5o2"]
+atlas = ExtResource("1_wqksa")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b8ob"]
+atlas = ExtResource("1_wqksa")
+region = Rect2(256, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8hw5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlyut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04ouj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81kpy")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu4uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c5o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b8ob")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-grow_vertical = 2
+anchors_preset = 0
+script = ExtResource("1_h6cvh")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_top = -324.0
-offset_right = 128.0
-offset_bottom = -196.0
-scale = Vector2(1.74955, 5.06019)
-texture = ExtResource("1_uc5v0")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(75, 154)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_a8hw5")
+animation = &"open"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
-offset_top = -324.0
-offset_right = 224.0
-offset_bottom = 324.0
+offset_top = 30.0
+offset_right = 90.0
+offset_bottom = 280.0
 horizontal_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
@@ -55,5 +107,10 @@ item_scene = ExtResource("3_qyrux")
 [node name="TextureRect6" parent="ScrollContainer/VBoxContainer" instance=ExtResource("4_qb5mr")]
 layout_mode = 2
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStream_iixy3")
+[node name="OpenAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_knn5w")
+
+[node name="CloseAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_jamtx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

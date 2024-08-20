@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgui2wovgrgv2"]
+[gd_scene load_steps=10 format=3 uid="uid://bgui2wovgrgv2"]
 
 [ext_resource type="PackedScene" uid="uid://bpl0nr0fxip02" path="res://Scenes/player.tscn" id="1_ndci7"]
 [ext_resource type="PackedScene" uid="uid://c017sb5wueiyn" path="res://Scenes/platform.tscn" id="2_rg64u"]
 [ext_resource type="PackedScene" uid="uid://c0laycxbbb477" path="res://Scenes/cheese.tscn" id="3_4ib7o"]
 [ext_resource type="PackedScene" uid="uid://d3j4jujp0a7xf" path="res://Scenes/ladder.tscn" id="4_ojoyj"]
 [ext_resource type="Texture2D" uid="uid://dpxdk68umq8lc" path="res://Assets/Props/Fent_Needle.png" id="5_dqphp"]
+[ext_resource type="PackedScene" uid="uid://e74ipv610cot" path="res://Scenes/ControlProps/fent_needle_prop.tscn" id="6_cttab"]
+[ext_resource type="PackedScene" uid="uid://0a752tdae7ey" path="res://Scenes/ControlProps/prop_item.tscn" id="7_5v8d8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lgyh"]
 size = Vector2(32, 5)
@@ -50,3 +52,13 @@ shape = SubResource("RectangleShape2D_3lgyh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(-0.424591, -0.610016)
 shape = SubResource("RectangleShape2D_7ibme")
+
+[node name="InvRound1" type="Node" parent="."]
+
+[node name="TextureRect" parent="InvRound1" instance=ExtResource("6_cttab")]
+
+[node name="TextureRect2" parent="InvRound1" instance=ExtResource("7_5v8d8")]
+
+[node name="InvRound2" type="Node" parent="."]
+
+[node name="InvRound3" type="Node" parent="."]

@@ -30,7 +30,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	
 	if Input.is_mouse_button_pressed( MOUSE_BUTTON_LEFT ):
 		if mouse_hover:
 			held = true
@@ -38,19 +37,18 @@ func _process(_delta):
 			if parent.is_class("VBoxContainer"):
 				parent.remove_child(self)
 				arrangement.add_child(self)
-				
+
 	else:
 		held = false
-		if position.x < inventory_bound_right && get_parent() != box:
+		if position.x < inventory_bound_right && get_parent().name != "VBoxContainer":
 			arrangement.remove_child(self)
 			box.add_child(self)
 			rotation = 0
-	
+
 	if held:
 		position =  _camera.get_local_mouse_position() + _camera.global_position - px_size_div2
-		
 
-	if mouse_hover:
+	if mouse_hover && get_parent().name != "VBoxContainer":
 		var scroll_axis = 0
 		scroll_axis += -1 if  Input.is_action_just_pressed("rotate_left") else 0
 		scroll_axis += 1 if Input.is_action_just_pressed( "rotate_right") else 0
@@ -67,15 +65,11 @@ func _on_mouse_exited():
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		mouse_hover = false;
 
-
-
 func _on_area_2d_body_entered(_body):
 	valid_loc = false
 	modulate = invalid_modulate
-	
 
 func _on_area_2d_body_exited(_body):
 	if area2D.get_overlapping_bodies().size() == 0:
 		valid_loc = true
 		modulate = no_modulate
-	
