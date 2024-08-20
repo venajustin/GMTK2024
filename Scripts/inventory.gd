@@ -6,6 +6,7 @@ var close_time:float = 1000000
 var open_time:float = 1000000
 
 @onready var _scroll_container:ScrollContainer = $ScrollContainer
+@onready var _vbox_container:VBoxContainer = $ScrollContainer/VBoxContainer
 @onready var _open_audio = $OpenAudio
 @onready var _close_audio = $CloseAudio
 
@@ -40,3 +41,9 @@ func close():
 	_animator.play("close");
 	close_time = .66
 	_scroll_container.visible = false
+	
+func clear():
+	for child in _vbox_container.get_children():
+		_vbox_container.remove_child(child)
+func add_prop(prop):
+	_vbox_container.add_child(prop)

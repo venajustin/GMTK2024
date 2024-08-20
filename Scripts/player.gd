@@ -13,7 +13,7 @@ func _ready() :
 	_animated_sprite.play("idle")
 @export var climbing = false
 @export var weight = 1.0;
-var cheese = 0.0
+var cheese:int = 0
 var original_position: Vector2 = Vector2(480,490)
 
 func _physics_process(delta):
@@ -98,13 +98,17 @@ func bounce():
 	else: 
 		velocity.y = spring + 200
 
-func gotCheese():
-	if cheese == 0.0:
+# returns true if last cheese eaten (move to next level)
+func gotCheese() -> bool:
+	if cheese == 0:
 		weight = 2.0
 		SPEED = 100
 		JUMP_VELOCITY = -200
 		position = original_position
-		cheese = 1.0
-	elif cheese == 1.0:
-		get_tree().reload_current_scene()
+		cheese = 1
+		return false
+	elif cheese == 1:
+		return true
+	return true
+	
 	

@@ -21,7 +21,7 @@ var box: VBoxContainer = null
 var inventory_bound_right:int = 0
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready():		
 	modulate = no_modulate
 	inventory = get_tree().root.get_child(0).find_child("CanvasLayer").find_child("Inventory")
 	var inv_scr_cont:ScrollContainer = inventory.find_child("ScrollContainer")

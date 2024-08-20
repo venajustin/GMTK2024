@@ -6,7 +6,7 @@ var paused:bool = false
 @export var _menu_scene:PackedScene = null
 var menu:Control
 
-
+var cheese = null
 
 
 
@@ -37,7 +37,6 @@ func _ready():
 	#_intersect_params.collide_with_bodies = true;
 	#_intersect_params.collision_mask = 0x7FFFFFFF
 	#_intersect_params.exclude = []
-	
 	_tree.paused = true;
 
 	menu = _menu_scene.instantiate()
@@ -47,7 +46,6 @@ func _ready():
 	state = GameState.MENU;
 	
 	pause = _pause_scene.instantiate()
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -85,6 +83,7 @@ func start_level():
 	level.process_mode = Node.PROCESS_MODE_INHERIT
 	state = GameState.RUNNING
 	_inventory.close()
+	cheese.connect("load_next", load_next_level)
 	_camera.tracking_node = level.find_child("Player") 
 	var props = _arrangement.get_children();
 	for prop in props:
@@ -96,6 +95,19 @@ func start_level():
 			level.add_child(item)
 			_arrangement.remove_child(prop);
 
+func load_next_level(levelScene):	
+	get_tree().current_scene.remove_child(level)
+	_canvas.add_child(_inventory)
+	level = levelScene.instantiate()
+	cheese = level.find_child("cheese")
+	get_tree().current_scene.add_child(level)
+	level.process_mode = Node.PROCESS_MODE_DISABLED
+	state = GameState.BUILD;
+	_inventory.clear()
+	var inv_items = level.find_child("InventoryItems")
+	var inv_scenes:Array[PackedScene] = inv_items.round1
+	for scene in inv_scenes:
+		_inventory.add_prop(scene.instantiate())
 
 func pause_game():
 	if paused:
@@ -117,9 +129,11 @@ func _on_menu_start_level():
 	_tree.paused = false
 	_canvas.remove_child(menu)
 	level = load("res://Levels/level5.tscn").instantiate()
+	cheese = level.find_child("cheese")
 	get_tree().current_scene.add_child(level)
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	state = GameState.BUILD;
+	load_next_level(load("res://Levels/level5.tscn"))
 	
 
 
