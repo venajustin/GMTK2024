@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bpl0nr0fxip02" path="res://Scenes/player.tscn" id="1_i44p1"]
 [ext_resource type="PackedScene" uid="uid://c017sb5wueiyn" path="res://Scenes/platform.tscn" id="2_nbr7g"]
-[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_fpfi7"]
-[ext_resource type="Texture2D" uid="uid://6q36mviivses" path="res://Assets/Props/Book_Side_32_32.png" id="9_y174j"]
 [ext_resource type="PackedScene" uid="uid://c0laycxbbb477" path="res://Scenes/cheese.tscn" id="4_wy48c"]
 [ext_resource type="PackedScene" uid="uid://d3j4jujp0a7xf" path="res://Scenes/ladder.tscn" id="5_qa8f2"]
 [ext_resource type="PackedScene" uid="uid://bomxqopy74rw6" path="res://Scenes/fent_needle.tscn" id="6_2pumo"]
