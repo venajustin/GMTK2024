@@ -29,7 +29,7 @@ func _ready():
 	box = inventory.find_child("ScrollContainer").find_child("VBoxContainer")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 	if Input.is_mouse_button_pressed( MOUSE_BUTTON_LEFT ):
 		if mouse_hover:
@@ -41,7 +41,7 @@ func _process(delta):
 				
 	else:
 		held = false
-		if position.x < inventory_bound_right:
+		if position.x < inventory_bound_right && get_parent() != box:
 			arrangement.remove_child(self)
 			box.add_child(self)
 			rotation = 0
@@ -69,12 +69,12 @@ func _on_mouse_exited():
 
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	valid_loc = false
 	modulate = invalid_modulate
 	
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	if area2D.get_overlapping_bodies().size() == 0:
 		valid_loc = true
 		modulate = no_modulate

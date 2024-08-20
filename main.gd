@@ -6,9 +6,9 @@ var paused:bool = false
 @export var _menu_scene:PackedScene = null
 var menu:Control
 
-var _world2d:World2D 
 
-@onready var _viewport:Viewport = get_viewport()
+
+
 
 @export var _pause_scene:PackedScene = null
 var pause:Control
@@ -19,12 +19,12 @@ var pause:Control
 @onready var _camera:Camera2D = $Camera2D
 var level:Node2D = null;
 
-var _intersect_params:PhysicsPointQueryParameters2D = PhysicsPointQueryParameters2D.new()
+@onready var _window := get_window()
 
 @onready var _path_follow:PathFollow2D = $Path2D/PathFollow2D
 
-@onready var _inventory:Control = $Inventory
-@onready var _inventory_audio_stream = $Inventory/AudioStreamPlayer2D
+@onready var _inventory:Control = $CanvasLayer/Inventory
+@onready var _inventory_audio_stream = $CanvasLayer/Inventory/AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,6 +46,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	
+	if Input.is_action_just_pressed("fullscreen"):
+		if _window.mode == Window.MODE_EXCLUSIVE_FULLSCREEN:
+			_window.mode = Window.MODE_WINDOWED
+		elif _window.mode == Window.MODE_WINDOWED:
+			_window.mode = Window.MODE_EXCLUSIVE_FULLSCREEN
+	
 	if Input.is_action_just_pressed("pause"):
 		if state == GameState.MENU:
 			get_tree().quit()
@@ -74,7 +81,7 @@ func _process(_delta):
 func start_level():
 	level.process_mode = Node.PROCESS_MODE_INHERIT
 	state = GameState.RUNNING
-	remove_child(_inventory);
+	_canvas.remove_child(_inventory);
 	_camera.tracking_node = level.find_child("Player") 
 	var props = _arrangement.get_children();
 	for prop in props:

@@ -74,14 +74,22 @@ step = 16.0
 texture_progress = ExtResource("3_ob3j7")
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("7_uxfe0")]
+texture_filter = 1
 
 [node name="Arrangement" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(417, 244)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_right = 1000
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 script = ExtResource("7_otsno")
 
 [node name="Path2D" type="Path2D" parent="."]
