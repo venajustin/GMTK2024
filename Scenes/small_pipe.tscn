@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cftd6g3n4l3wd"]
+
+[ext_resource type="Texture2D" uid="uid://bvqqrbci5dwng" path="res://Assets/Level Design/Rusty_StraightPipe_32_32.png" id="1_31oku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxuvh"]
+size = Vector2(32, 6)
+
+[node name="StaticBody2D2" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_31oku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bxuvh")
