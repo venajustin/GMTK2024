@@ -1,10 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpa6ptywoxxde"]
+[gd_scene load_steps=12 format=3 uid="uid://bpa6ptywoxxde"]
 
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="1_h6cvh"]
 [ext_resource type="Texture2D" uid="uid://iunw5d76mqj" path="res://Assets/Level Design/drawer.png" id="1_wqksa"]
-[ext_resource type="PackedScene" uid="uid://0a752tdae7ey" path="res://Scenes/ControlProps/prop_item.tscn" id="2_dl5m4"]
-[ext_resource type="PackedScene" uid="uid://dod275p87rve" path="res://Scenes/testitem.tscn" id="3_qyrux"]
-[ext_resource type="PackedScene" uid="uid://e74ipv610cot" path="res://Scenes/ControlProps/fent_needle_prop.tscn" id="4_qb5mr"]
 [ext_resource type="AudioStream" uid="uid://esoa6hidofwy" path="res://Assets/Sound/DrawerOpen.wav" id="6_knn5w"]
 [ext_resource type="AudioStream" uid="uid://cldjaoiwrpy11" path="res://Assets/Sound/DrawerClose.wav" id="7_jamtx"]
 
@@ -83,30 +80,6 @@ horizontal_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
-
-[node name="TextureRect" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
-layout_mode = 2
-item_scene = ExtResource("3_qyrux")
-
-[node name="TextureRect2" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
-layout_mode = 2
-item_scene = ExtResource("3_qyrux")
-
-[node name="TextureRect3" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
-layout_mode = 2
-item_scene = ExtResource("3_qyrux")
-
-[node name="TextureRect4" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
-layout_mode = 2
-item_scene = ExtResource("3_qyrux")
-
-[node name="TextureRect5" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_dl5m4")]
-layout_mode = 2
-item_scene = ExtResource("3_qyrux")
-
-[node name="TextureRect6" parent="ScrollContainer/VBoxContainer" instance=ExtResource("4_qb5mr")]
-layout_mode = 2
-invalid_modulate = Color(1, 0.346825, 0.368989, 1)
 
 [node name="OpenAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_knn5w")
