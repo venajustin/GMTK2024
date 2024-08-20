@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://brier2ukcrgh5"]
+
+[ext_resource type="PackedScene" uid="uid://0a752tdae7ey" path="res://Scenes/ControlProps/prop_item.tscn" id="1_1ryrl"]
+[ext_resource type="Texture2D" uid="uid://c1bu6i5gkrmjs" path="res://Assets/Props/Wood_Plank_32_64.png" id="2_a7k4h"]
+[ext_resource type="PackedScene" uid="uid://dwktdtuaeitx" path="res://Scenes/wood_plank.tscn" id="3_f582e"]
+
+[node name="TextureRect" instance=ExtResource("1_1ryrl")]
+texture = ExtResource("2_a7k4h")
+item_scene = ExtResource("3_f582e")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(62.5, 61.5)
