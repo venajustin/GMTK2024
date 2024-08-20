@@ -13,11 +13,15 @@ var _world2d:World2D
 @export var _pause_scene:PackedScene = null
 var pause:Control
 
+@onready var _arrangement:Control = $Arrangement
+
 @onready var _canvas:CanvasLayer = $CanvasLayer
 @onready var _camera:Camera2D = $Camera2D
 var level:Node2D = null;
 
 var _intersect_params:PhysicsPointQueryParameters2D = PhysicsPointQueryParameters2D.new()
+
+@onready var _path_follow:PathFollow2D = $Path2D/PathFollow2D
 
 @onready var _inventory:Control = $Inventory
 
@@ -53,7 +57,11 @@ func _process(_delta):
 		if Input.is_action_pressed("play_level"):
 			start_level()
 			
-			
+	
+	if Input.is_action_just_pressed("pgdown"):
+		_path_follow.progress_ratio += .1;
+	if Input.is_action_just_pressed("pgup"):
+		_path_follow.progress_ratio -= .1;
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		#var peice = select_piece()
 		#if peice:
@@ -65,7 +73,17 @@ func _process(_delta):
 func start_level():
 	level.process_mode = Node.PROCESS_MODE_INHERIT
 	state = GameState.RUNNING
-	
+	remove_child(_inventory);
+	_camera.tracking_node = level.find_child("Player") 
+	var props = _arrangement.get_children();
+	for prop in props:
+		if prop.item_scene:
+			var scene:PackedScene = prop.item_scene;
+			var item = scene.instantiate()
+			item.position = prop.position
+			level.add_child(item)
+			_arrangement.remove_child(prop);
+
 
 func pause_game():
 	if paused:
