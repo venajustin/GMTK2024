@@ -92,6 +92,7 @@ func start_level():
 			var scene:PackedScene = prop.item_scene;
 			var item = scene.instantiate()
 			item.position = prop.position
+			item.rotation = prop.rotation
 			level.add_child(item)
 			_arrangement.remove_child(prop);
 
@@ -120,6 +121,7 @@ func _on_menu_start_level():
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	state = GameState.BUILD;
 	
+
 
 
 #func select_piece() -> Area2D:

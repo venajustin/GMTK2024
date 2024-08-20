@@ -16,6 +16,11 @@ func _process(_delta):
 		position_smoothing_enabled = false
 		if panning:
 			position = start_point - (get_local_mouse_position() - pan_point)
+
+	if position.x < limit_left:
+		position.x = limit_left
+	if position.x > limit_right:
+		position.x = limit_right
 	
 	if Input.is_action_just_pressed("pan"):
 		panning = true

@@ -40,7 +40,7 @@ func _process(_delta):
 
 	else:
 		held = false
-		if position.x < inventory_bound_right && get_parent().name != "VBoxContainer":
+		if viewport.get_mouse_position().x < 100 :
 			arrangement.remove_child(self)
 			box.add_child(self)
 			rotation = 0
