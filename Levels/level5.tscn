@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c017sb5wueiyn" path="res://Scenes/platform.tscn" id="2_rg64u"]
 [ext_resource type="PackedScene" uid="uid://c0laycxbbb477" path="res://Scenes/cheese.tscn" id="3_4ib7o"]
 [ext_resource type="PackedScene" uid="uid://d3j4jujp0a7xf" path="res://Scenes/ladder.tscn" id="4_ojoyj"]
-[ext_resource type="Texture2D" uid="uid://dpxdk68umq8lc" path="res://Assets/Props/Fent_Needle.png" id="5_dqphp"]
+[ext_resource type="Texture2D" uid="uid://d11ao562mqf1t" path="res://Assets/Props/Fent_Needle.png" id="5_dqphp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lgyh"]
 size = Vector2(32, 5)

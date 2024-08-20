@@ -1,18 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://c017sb5wueiyn"]
 
-[ext_resource type="Texture2D" uid="uid://dibstbyxxrtje" path="res://Assets/icon.svg" id="1_djm4y"]
+[ext_resource type="Texture2D" uid="uid://bvqqrbci5dwng" path="res://Assets/Level Design/Rusty_StraightPipe_32_32.png" id="1_c6abs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e64ar"]
-size = Vector2(899, 20)
+size = Vector2(899, 3)
 
 [node name="Platform" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3.05176e-05, 9.53674e-07)
-scale = Vector2(7.02344, 0.15625)
-texture = ExtResource("1_djm4y")
+position = Vector2(0.500031, 9.53674e-07)
+scale = Vector2(28.0938, 0.333)
+texture = ExtResource("1_c6abs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_e64ar")
 one_way_collision = true

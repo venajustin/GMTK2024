@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3kwcod6gv2nn"]
+
+[ext_resource type="PackedScene" uid="uid://ctjt3qy2ivrvs" path="res://Scenes/windows.tscn" id="1_xsncq"]
+
+[node name="3 window row" type="StaticBody2D"]
+
+[node name="windows3" parent="." instance=ExtResource("1_xsncq")]
+position = Vector2(500, 550)
+
+[node name="windows" parent="." instance=ExtResource("1_xsncq")]
+position = Vector2(750, 550)
+
+[node name="windows2" parent="." instance=ExtResource("1_xsncq")]
+position = Vector2(250, 550)

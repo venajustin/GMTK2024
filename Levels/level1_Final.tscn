@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd8kl3tm7l8nn"]
+
+[ext_resource type="PackedScene" uid="uid://bpl0nr0fxip02" path="res://Scenes/player.tscn" id="1_t7vk5"]
+[ext_resource type="PackedScene" uid="uid://bdgc8w6hgjbkc" path="res://Scenes/borders.tscn" id="2_mggxn"]
+[ext_resource type="PackedScene" uid="uid://bwo227arhjvib" path="res://Scenes/background.tscn" id="3_xf6iq"]
+[ext_resource type="PackedScene" uid="uid://c017sb5wueiyn" path="res://Scenes/platform.tscn" id="4_c2qvq"]
+[ext_resource type="PackedScene" uid="uid://d3kwcod6gv2nn" path="res://Scenes/3_window_row.tscn" id="5_l172e"]
+[ext_resource type="PackedScene" uid="uid://0a752tdae7ey" path="res://Scenes/ControlProps/prop_item.tscn" id="6_2wydo"]
+[ext_resource type="PackedScene" uid="uid://c0laycxbbb477" path="res://Scenes/cheese.tscn" id="7_b8isb"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_t7vk5")]
+position = Vector2(480, 490)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_mggxn")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_xf6iq")]
+
+[node name="Platform" parent="." instance=ExtResource("4_c2qvq")]
+position = Vector2(480, 500)
+
+[node name="3 window row" parent="." instance=ExtResource("5_l172e")]
+
+[node name="3 window row2" parent="." instance=ExtResource("5_l172e")]
+position = Vector2(0, -75)
+
+[node name="3 window row3" parent="." instance=ExtResource("5_l172e")]
+position = Vector2(0, -150)
+
+[node name="Platform2" parent="." instance=ExtResource("4_c2qvq")]
+position = Vector2(483, 167)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="TextureRect" parent="Node" instance=ExtResource("6_2wydo")]
+offset_left = 155.0
+offset_top = -103.0
+offset_right = 283.0
+offset_bottom = 25.0
+
+[node name="Node2" type="Node" parent="."]
+
+[node name="TextureRect" parent="Node2" instance=ExtResource("6_2wydo")]
+offset_left = 97.0
+offset_top = -60.0
+offset_right = 225.0
+offset_bottom = 68.0
+
+[node name="cheese" parent="." instance=ExtResource("7_b8isb")]
+position = Vector2(531, 146)

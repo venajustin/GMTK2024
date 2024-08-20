@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bj3m2rpyk20ne"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mrqci"]
-[ext_resource type="PackedScene" uid="uid://cv7ep50urhw5p" path="res://Scenes/menu.tscn" id="2_5vq1i"]
+[ext_resource type="PackedScene" path="res://Scenes/menu.tscn" id="2_5vq1i"]
 [ext_resource type="Texture2D" uid="uid://dibstbyxxrtje" path="res://Assets/icon.svg" id="2_y7rcl"]
-[ext_resource type="Texture2D" uid="uid://djibgwytmffec" path="res://Assets/loading-bar.png" id="3_ob3j7"]
-[ext_resource type="PackedScene" uid="uid://dkivowkb4lat3" path="res://Scenes/pause.tscn" id="3_ycesw"]
+[ext_resource type="Texture2D" uid="uid://djcshf44ol0yo" path="res://Assets/loading-bar.png" id="3_ob3j7"]
+[ext_resource type="PackedScene" path="res://Scenes/pause.tscn" id="3_ycesw"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="7_otsno"]
 [ext_resource type="PackedScene" uid="uid://bpa6ptywoxxde" path="res://Scenes/inventory.tscn" id="7_uxfe0"]
 
@@ -84,7 +84,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(417, 244)
+position = Vector2(367, 405)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_right = 1000
