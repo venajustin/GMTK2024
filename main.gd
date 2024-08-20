@@ -24,6 +24,7 @@ var _intersect_params:PhysicsPointQueryParameters2D = PhysicsPointQueryParameter
 @onready var _path_follow:PathFollow2D = $Path2D/PathFollow2D
 
 @onready var _inventory:Control = $Inventory
+@onready var _inventory_audio_stream = $Inventory/AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
